@@ -17,15 +17,15 @@ else
 {
      $links = array(
         0 => site_url()."/main",
-        1 => site_url()."/main/register",
-        2 => site_url()."/main/about",
+        1 => site_url()."/main/about",
+        2 => site_url()."/main/register",
         3 => site_url()."/main/login"
          );
     
     $links_text = array(        
         0 => "Home",
-        1 => "Register",
-        2 => "About Us",
+        1 => "About Us",
+        2 => "Register",
         3 => "Login"
         );
 }

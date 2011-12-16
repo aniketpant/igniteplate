@@ -16,6 +16,7 @@ class Main extends CI_Controller {
         
 	public function register()
 	{
+                $data['page_title'] = 'Register';
                 $this->form_validation->set_error_delimiters('<div class="alert-message error">', '</div>');
                 $data['error'] = NULL;
                 if ($this->form_validation->run('signup') == FALSE) //validate registration data

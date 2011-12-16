@@ -20,6 +20,9 @@
 <body>
     <div id="header-container">
         <div id="header" class="container">
+            <h1 id="logo">
+                Igniteplate
+            </h1>
             <nav role="navigation">
                 <?php include 'navigation.php'; ?>
             </nav>

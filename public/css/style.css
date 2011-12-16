@@ -15,7 +15,16 @@ h1, h2, h3 {
     HEADER
 \*-----------------------------------------*/
 #header-container {
-    padding: 20px 0 20px;
+}
+#logo {
+    letter-spacing: 5px;
+    text-align: center;
+    color: #ff0450;
+    text-transform: uppercase;
+    border-top: 3px solid #333;
+    border-bottom: 3px solid #333;
+    margin: 10px 0;
+    padding: 10px;
 }
 /*-----------------------------------------*\
     NAVIGATION
@@ -53,9 +62,8 @@ nav[role="navigation"] ul li a:hover {
     CONTENT
 \*-----------------------------------------*/
 #content {
-    margin-top: 50px;
+    margin: 50px auto;
     min-height: 300px;
-    margin-bottom: 50px;
 }
 /*-----------------------------------------*\
     FOOTER
