@@ -15,3 +15,5 @@ A template for all your new web applications that you can use directly.
  1. Codeigniter
  2. Obviously, PHP
  3. bcrypt
+ 4. Twitter bootstrap
+ 5. inuit.css

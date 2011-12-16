@@ -1,0 +1,70 @@
+@import "inuit.css";
+
+/*-----------------------------------------*\
+    TYPOGRAPHY
+\*-----------------------------------------*/
+body { font-family: 'Droid Sans', Helvetica, sans-serif !important }
+label,
+input,
+select,
+textarea { font-family: 'Droid Sans', Helvetica, sans-serif !important }
+h1, h2, h3 {
+    font-family: 'Droid Serif', serif !important;
+}
+/*-----------------------------------------*\
+    HEADER
+\*-----------------------------------------*/
+#header-container {
+    padding: 20px 0 20px;
+}
+/*-----------------------------------------*\
+    NAVIGATION
+\*-----------------------------------------*/
+nav[role="navigation"] {
+}
+nav[role="navigation"] ul {
+    margin: 1em 0;
+}
+nav[role="navigation"] ul li {
+    display: inline-block;
+    -moz-transition: all 0.25s linear;
+    -webkit-transition: all 0.25s linear;
+    transition: all 0.25s linear;
+}
+nav[role="navigation"] ul li a {
+    display: block;
+    padding: 0 0.5em 0.25em;
+    color: #222;
+    font-family: 'Droid Serif', serif;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    -moz-transition: all 0.25s linear;
+    -webkit-transition: all 0.25s linear;
+    transition: all 0.25s linear;
+}
+nav[role="navigation"] ul li a:hover {
+    color: #ff0450;
+    border-bottom: 1px solid #ff0450;
+    -moz-transition: all 0.25s linear;
+    -webkit-transition: all 0.25s linear;
+    transition: all 0.25s linear;
+}
+/*-----------------------------------------*\
+    CONTENT
+\*-----------------------------------------*/
+#content {
+    margin-top: 50px;
+    min-height: 300px;
+    margin-bottom: 50px;
+}
+/*-----------------------------------------*\
+    FOOTER
+\*-----------------------------------------*/
+#footer {
+    color: #222;
+    text-align: center;
+}
+#footer p.copyright {
+    margin: 0; padding: 1em;
+    font-size: 1em
+}
