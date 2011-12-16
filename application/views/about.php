@@ -1,7 +1,7 @@
 <?php include '/inc/header.php'; ?>
 
     <h1>
-        Register
+        About
     </h1>
 
 <?php

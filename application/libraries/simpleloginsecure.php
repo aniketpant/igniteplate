@@ -5,37 +5,10 @@ require_once('phpass-0.3/PasswordHash.php');
 define('PHPASS_HASH_STRENGTH', 8);
 define('PHPASS_HASH_PORTABLE', false);
 
-/**
- * SimpleLoginSecure Class
- *
- * Makes authentication simple and secure.
- *
- * Simplelogin expects the following database setup. If you are not using 
- * this setup you may need to do some tweaking.
- *   
- * 
- *   CREATE TABLE `users` (
- *     `user_id` int(10) unsigned NOT NULL auto_increment,
- *     `user_email` varchar(255) NOT NULL default '',
- *     `user_pass` varchar(60) NOT NULL default '',
- *     `user_date` datetime NOT NULL default '0000-00-00 00:00:00' COMMENT 'Creation date',
- *     `user_modified` datetime NOT NULL default '0000-00-00 00:00:00',
- *     `user_last_login` datetime NULL default NULL,
- *     PRIMARY KEY  (`user_id`),
- *     UNIQUE KEY `user_email` (`user_email`),
- *   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
- * 
- * @package   SimpleLoginSecure
- * @version   1.0.1
- * @author    Alex Dunae, Dialect <alex[at]dialect.ca>
- * @copyright Copyright (c) 2008, Alex Dunae
- * @license   http://www.gnu.org/licenses/gpl-3.0.txt
- * @link      http://dialect.ca/code/ci-simple-login-secure/
- */
 class SimpleLoginSecure
 {
 	var $CI;
-	var $user_table = 'login_master';
+	var $user_table = 'user_master';
 
 	/**
 	 * Create a user account
@@ -46,7 +19,7 @@ class SimpleLoginSecure
 	 * @param	bool
 	 * @return	bool
 	 */
-	function create($user_email = '', $user_pass = '', $auto_login = true) 
+	function create($user_email = '', $user_pass = '', $auto_login = false) 
 	{
 		$this->CI =& get_instance();
 
@@ -56,7 +29,7 @@ class SimpleLoginSecure
 		}
 		
 		//Check against user table
-		$this->CI->db->where('email', $user_email); 
+		$this->CI->db->where('user_email', $user_email); 
 		$query = $this->CI->db->get_where($this->user_table);
 		
 		if ($query->num_rows() > 0) //user_email already exists
@@ -68,10 +41,8 @@ class SimpleLoginSecure
 
 		//Insert account into the database
 		$data = array(
-					'email' => $user_email,
-					'password' => $user_pass_hashed,
-					'create_date' => date_default_timezone_set('Asia/Calcutta').date('c'),
-					'user_modified' => date_default_timezone_set('Asia/Calcutta').date('c'),
+					'user_email' => $user_email,
+					'user_password' => $user_pass_hashed
 				);
 
 		$this->CI->db->set($data); 
@@ -107,7 +78,7 @@ class SimpleLoginSecure
 		
 		
 		//Check against user table
-		$this->CI->db->where('email', $user_email); 
+		$this->CI->db->where('user_email', $user_email); 
 		$query = $this->CI->db->get_where($this->user_table);
 
 		
@@ -126,7 +97,7 @@ class SimpleLoginSecure
 			//Create a fresh, brand new session
 			$this->CI->session->sess_create();
 
-			$this->CI->db->simple_query('UPDATE ' . $this->user_table  . ' SET user_last_login = NOW() WHERE idlogin_master = ' . $user_data['idlogin_master']);
+			$this->CI->db->simple_query('UPDATE ' . $this->user_table  . ' SET user_last_login = NOW() WHERE iduser_master = ' . $user_data['idlogin_master']);
 
 			//Set session data
 			unset($user_data['password']);
@@ -169,7 +140,7 @@ class SimpleLoginSecure
 		if(!is_numeric($user_id))
 			return false;			
 
-		return $this->CI->db->delete($this->user_table, array('user_id' => $user_id));
+		return $this->CI->db->delete($this->user_table, array('iduser_master' => $user_id));
 	}
         
         /**
@@ -188,10 +159,10 @@ class SimpleLoginSecure
 		$user_pass_hashed = $hasher->HashPassword($user_pass);
                 
                 $data = array(
-                    'password' => $user_pass_hashed
+                    'user_password' => $user_pass_hashed
                     );
-                $this->CI->db->where('email', $user_email);
-                return $this->CI->db->update('login_master', $data);
+                $this->CI->db->where('user_email', $user_email);
+                return $this->CI->db->update($user_table, $data);
 	}
 	
 }
