@@ -19,7 +19,7 @@ class SimpleLoginSecure
 	 * @param	bool
 	 * @return	bool
 	 */
-	function create($user_email = '', $user_pass = '', $auto_login = false) 
+	function create($user_email = '', $user_pass = '', $auto_login) 
 	{
 		$this->CI =& get_instance();
 
@@ -97,7 +97,7 @@ class SimpleLoginSecure
 			//Create a fresh, brand new session
 			$this->CI->session->sess_create();
 
-			$this->CI->db->simple_query('UPDATE ' . $this->user_table  . ' SET user_last_login = NOW() WHERE iduser_master = ' . $user_data['idlogin_master']);
+			$this->CI->db->simple_query('UPDATE ' . $this->user_table  . ' SET user_last_login = NOW() WHERE iduser_master = ' . $user_data['iduser_master']);
 
 			//Set session data
 			unset($user_data['password']);

@@ -24,7 +24,7 @@ else
     
     $links_text = array(        
         0 => "Home",
-        1 => "About Us",
+        1 => "About",
         2 => "Register",
         3 => "Login"
         );

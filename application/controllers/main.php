@@ -40,9 +40,10 @@ class Main extends CI_Controller {
                     
                     else // proceed with registration
                     {
-                        $registration_val = $this->simpleloginsecure->create($email, $password);
+                        $registration_val = $this->simpleloginsecure->create($email, $password, false);
                         if (is_true($registration_val) ) {
                             $this->load->view('registration_success');
+                            $this->user->generate_verification_key($email);
                         }
                         else {
                             $this->load->view('registration_problem');
@@ -61,13 +62,11 @@ class Main extends CI_Controller {
                 {      
                     $data['page_title'] = 'Login';
                     $data['error'] ="";
-                    //$data['logged_in'] = $this->session->userdata('logged_in');
                     
                     $this->form_validation->set_error_delimiters('<div class="alert-message error"><a class="close" href="#">×</a><p>', '</p></div>');
                     
                     if ($this->form_validation->run('login') == FALSE) //present and validate login form
                     {
-                        
                         $this->load->view('login', $data);
                     }
                     else
@@ -82,10 +81,17 @@ class Main extends CI_Controller {
                             $data['error'] = "Incorrect username or password. Please try again.";
                             $this->load->view('login', $data);
                         }
-
+                        
                         else //successful login
                         {
-                            $this->load->view('dashboard');
+                            $this->load->model('usermodel', 'user');
+                            if ($this->user->check_account_verified($email)) {
+                                $this->load->view('dashboard');
+                            }
+                            else {
+                                $this->session->set_userdata(array('logged_in' => FALSE));
+                                $this->load->view('account_not_confirmed');
+                            }
                         }
                     }
                 }

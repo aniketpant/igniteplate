@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-        <title><?php echo $page_title; ?></title>
+        <title><?php echo $page_title; ?> &mdash; igniteplate</title>
         
         <link rel="icon" type="favicon" href="<?php echo base_url(); ?>public/images/favicon.ico"/>
         
-        <!-- link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/inuit.css" rel="stylesheet" / -->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/inuit.css" rel="stylesheet" />
         
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/style.css" rel="stylesheet" />
 
@@ -21,7 +21,7 @@
     <div id="header-container">
         <div id="header" class="container">
             <h1 id="logo">
-                Igniteplate
+                igniteplate
             </h1>
             <nav role="navigation">
                 <?php include 'navigation.php'; ?>

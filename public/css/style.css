@@ -17,14 +17,13 @@ h1, h2, h3 {
 #header-container {
 }
 #logo {
-    letter-spacing: 5px;
-    text-align: center;
     color: #ff0450;
-    text-transform: uppercase;
-    border-top: 3px solid #333;
-    border-bottom: 3px solid #333;
     margin: 10px 0;
     padding: 10px;
+    letter-spacing: 5px;
+    text-align: center;
+    text-transform: lowercase;
+    text-shadow: 2px 2px 1px rgba(255, 4, 80, 0.25);
 }
 /*-----------------------------------------*\
     NAVIGATION
