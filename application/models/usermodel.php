@@ -70,18 +70,14 @@
                 
                 $this->load->library('email');
                
-                /*
-                 * $config['protocol']    = 'smtp';
-                 * $config['smtp_host']    = 'ssl://smtp.gmail.com';
-                 * $config['smtp_port']    = '465';
-                 * $config['smtp_timeout'] = '7';
-                 * $config['smtp_user']    = 'borncssed@gmail.com';
-                 * $config['smtp_pass']    = '*******';
-                 * $config['charset']    = 'utf-8';
-                 * $config['newline']    = "\r\n";
-                 * $config['mailtype'] = 'text'; // or html
-                 * $config['validation'] = TRUE; // bool whether to validate email or not  
-                 */
+                $email_config['useragent'] = 'igniteplate';
+                $email_config['protocol'] = 'sendmail';
+                $email_config['mailpath'] = '/usr/sbin/sendmail';
+                $email_config['charset'] = 'iso-8859-1';
+                $email_config['wordwrap'] = TRUE;
+                $email_config['mailtype'] = 'html';
+
+                $this->email->initialize($email_config);
                 
                 $this->email->from('your@example.com', 'Your Name');
                 $this->email->to($email);
