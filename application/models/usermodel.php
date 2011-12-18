@@ -1,12 +1,18 @@
 <?php
-    class activitymodel extends CI_Model {
+    class usermodel extends CI_Model {
         
         function __construct() {
                 parent::__construct();
         }
         
+        function get_user_id($email) {
+                $result = $this->db->get_where('user_master', array('user_email' => $email));
+                $id = $result->first_row()->iduser_master;
+                return $id;
+        }
+        
         function check_email_exists($email) {
-                $result = $this->db->get_where('user_master', array('email' => $email));
+                $result = $this->db->get_where('user_master', array('user_email' => $email));
                 if ($result->num_rows()) {
                     return TRUE;
                 } 
@@ -15,23 +21,35 @@
                 }
         }
         
-        function check_account_verified($email) {
-                $result = $this->db->get_where('user_master', array('email' => $email));
-                $id = $result->row(0)->id;
-                $result_new = $this->db->get_where('user_verify', array('user_master_iduser_master' => $id));
-                $account_verified = $result_new->row(0)->account_verified;
-                if ($account_verified == 0) {
-                    return FALSE;
+        function check_account_verified($id) {
+                $result = $this->db->get_where('user_verify', array('user_master_iduser_master' => $id));
+                if ($result->num_rows()) {
+                    $account_verified = $result->first_row()->account_verified;
+                    if ($account_verified == 0) {
+                        return FALSE;
+                    }
+                    else {
+                        return TRUE;
+                    }
                 }
                 else {
-                    return TRUE;
+                    return FALSE;
                 }
         }
         
+        function verify_account($verification_key) {
+                $data = array(
+                    'account_verified'  => 1
+                );
+                $this->db->where('verification_key', $verification_key);
+                $result = $this->db->update('user_verify', $data);
+                return $result;
+        }
+        
         function generate_verification_key($email) {
-                $result = $this->db->get_where('user_master', array('email' => $email));
+                $result = $this->db->get_where('user_master', array('user_email' => $email));
                 $verification_key = md5($email);
-                $id = $result->row(0)->id;
+                $id = $result->first_row()->iduser_master;
                 $data = array(
                     'verification_key'          => $verification_key,
                     'account_verified'          => 0,
@@ -41,21 +59,34 @@
         }
         
         function send_mail_to_user($email) {
-                $result = $this->db->get_where('user_master', array('email' => $email));
-                $id = $result->row(0)->id;
+                $result = $this->db->get_where('user_master', array('user_email' => $email));
+                $id = $result->first_row()->iduser_master;
                 $result_new = $this->db->get_where('user_verify', array('user_master_iduser_master' => $id));
-                $verification_key = $result_new->row(0)->verification_key;
+                $verification_key = $result_new->first_row()->verification_key;
                 
                 /*
                  * Configure this part
                  */
                 
                 $this->load->library('email');
-
+               
+                /*
+                 * $config['protocol']    = 'smtp';
+                 * $config['smtp_host']    = 'ssl://smtp.gmail.com';
+                 * $config['smtp_port']    = '465';
+                 * $config['smtp_timeout'] = '7';
+                 * $config['smtp_user']    = 'borncssed@gmail.com';
+                 * $config['smtp_pass']    = '*******';
+                 * $config['charset']    = 'utf-8';
+                 * $config['newline']    = "\r\n";
+                 * $config['mailtype'] = 'text'; // or html
+                 * $config['validation'] = TRUE; // bool whether to validate email or not  
+                 */
+                
                 $this->email->from('your@example.com', 'Your Name');
                 $this->email->to($email);
                 
-                $message = 'Click the following link to confirm your registration.<br/>';
+                $message = 'Click the following link to confirm your registration.<br/><a href="'.site_url().'/user/verify/'.$verification_key.'">'.site_url().'/user/verify/'.$verification_key.'</a>';
                 
                 $this->email->subject('igniteplate - Account Verification');
                 $this->email->message($message);

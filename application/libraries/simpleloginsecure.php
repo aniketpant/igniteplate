@@ -19,7 +19,7 @@ class SimpleLoginSecure
 	 * @param	bool
 	 * @return	bool
 	 */
-	function create($user_email = '', $user_pass = '', $auto_login) 
+	function create($user_email = '', $user_pass = '', $auto_login = TRUE) 
 	{
 		$this->CI =& get_instance();
 
@@ -88,7 +88,7 @@ class SimpleLoginSecure
 
 			$hasher = new PasswordHash(PHPASS_HASH_STRENGTH, PHPASS_HASH_PORTABLE);
 
-			if(!$hasher->CheckPassword($user_pass, $user_data['password']))
+			if(!$hasher->CheckPassword($user_pass, $user_data['user_password']))
 				return false;
 
 			//Destroy old session
@@ -100,8 +100,8 @@ class SimpleLoginSecure
 			$this->CI->db->simple_query('UPDATE ' . $this->user_table  . ' SET user_last_login = NOW() WHERE iduser_master = ' . $user_data['iduser_master']);
 
 			//Set session data
-			unset($user_data['password']);
-			$user_data['user'] = $user_data['email']; // for compatibility with Simplelogin
+			unset($user_data['user_password']);
+			$user_data['user'] = $user_data['user_email']; // for compatibility with Simplelogin
 			$user_data['logged_in'] = true;
 			$this->CI->session->set_userdata($user_data);
 			

@@ -23,7 +23,7 @@ h1, h2, h3 {
     letter-spacing: 5px;
     text-align: center;
     text-transform: lowercase;
-    text-shadow: 2px 2px 1px rgba(255, 4, 80, 0.25);
+    text-shadow: 2px 2px 0px rgba(255, 4, 80, 0.25);
 }
 /*-----------------------------------------*\
     NAVIGATION
@@ -71,7 +71,10 @@ nav[role="navigation"] ul li a:hover {
     color: #222;
     text-align: center;
 }
-#footer p.copyright {
+#footer p.attr {
     margin: 0; padding: 1em;
     font-size: 1em
+}
+#footer p.attr a {
+    color: #ff0450;
 }

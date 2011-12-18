@@ -2,15 +2,15 @@
 if ($this->session->userdata('logged_in'))   
 {
     $links = array(
-        0 => site_url()."/home/dashboard",
-        1 => site_url()."/home/profile",
-        3 => site_url()."/home/logout"
+        0 => site_url()."/user",
+        1 => site_url()."/user/profile",
+        2 => site_url()."/user/logout"
         );
     
     $links_text = array(        
         0 => "Dashboard",
         1 => "Profile",
-        3 => "Logout"
+        2 => "Logout"
         );
 }
 else 

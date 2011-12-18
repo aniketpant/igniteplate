@@ -28,11 +28,12 @@ class Main extends CI_Controller {
                     $email = $this->input->post('email');
                     $password = $this->input->post('password');
                     
-                    //check if email already registered.
                     $this->load->model('usermodel', 'user');
+                    
+                    //check if email already registered.
                     $check_val = $this->user->check_email_exists($email);
                     
-                    if( is_true($checkval) ) //email address found
+                    if( $check_val == TRUE ) //email address found
                     {
                         $data['error'] = "This email address is already registered with us!";
                         $this->load->view('register', $data);
@@ -40,13 +41,14 @@ class Main extends CI_Controller {
                     
                     else // proceed with registration
                     {
-                        $registration_val = $this->simpleloginsecure->create($email, $password, false);
-                        if (is_true($registration_val) ) {
-                            $this->load->view('registration_success');
+                        $registration_val = $this->simpleloginsecure->create($email, $password, FALSE);
+                        if ($registration_val) {
                             $this->user->generate_verification_key($email);
+                            $this->user->send_mail_to_user($email);
+                            $this->load->view('messages/registration_success');
                         }
                         else {
-                            $this->load->view('registration_problem');
+                            $this->load->view('messages/registration_problem');
                         }
                     }
                 }
@@ -56,14 +58,14 @@ class Main extends CI_Controller {
 	{
                 if ( $this->session->userdata('logged_in') == TRUE) 
                 {
-                    redirect('home/index', 'location');
+                    redirect('user', 'location');
                 }
                 else
                 {      
                     $data['page_title'] = 'Login';
-                    $data['error'] ="";
+                    $data['error'] = NULL;
                     
-                    $this->form_validation->set_error_delimiters('<div class="alert-message error"><a class="close" href="#">×</a><p>', '</p></div>');
+                    $this->form_validation->set_error_delimiters('<div class="alert-message error"><p>', '</p></div>');
                     
                     if ($this->form_validation->run('login') == FALSE) //present and validate login form
                     {
@@ -75,22 +77,25 @@ class Main extends CI_Controller {
                         $password = $this->input->post('password');
                         
                         $check_val = $this->simpleloginsecure->login($email, $password);
+                        $this->session->set_userdata(array('logged_in' => FALSE));
 
                         if ($check_val == FALSE) 
                         {
-                            $data['error'] = "Incorrect username or password. Please try again.";
+                            $data['error'] = 'Incorrect username or password. Please try again.';
                             $this->load->view('login', $data);
                         }
                         
                         else //successful login
                         {
                             $this->load->model('usermodel', 'user');
-                            if ($this->user->check_account_verified($email)) {
-                                $this->load->view('dashboard');
+                            $id = $this->user->get_user_id($email);
+                            if ($this->user->check_account_verified($id)) {
+                                $this->session->set_userdata(array('logged_in' => TRUE));
+                                redirect('user', 'location');
                             }
                             else {
                                 $this->session->set_userdata(array('logged_in' => FALSE));
-                                $this->load->view('account_not_confirmed');
+                                $this->load->view('messages/account_not_confirmed');
                             }
                         }
                     }

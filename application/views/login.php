@@ -5,7 +5,7 @@
     </h1>
 
     <?php
-        echo form_open('main/Login');
+        echo form_open('main/login');
         echo form_label('Email  ', 'email');
         $arr_email = array(
             'name' => 'email',
@@ -47,7 +47,7 @@
     </div><br/>
     <div class="input">
     <?php
-        echo anchor('/main/ForgotPassword', 'Forgot Password', array('title' => 'Forgot Passoword', 'class' => 'btn'));
+        echo anchor('/main/forgot-password', 'Forgot Password', array('title' => 'Forgot Passoword', 'class' => 'btn'));
     ?>
     </div><br/>
     <?php
