@@ -8,16 +8,16 @@ class Main extends CI_Controller {
 		$this->load->view('main', $data);
 	}  
         
-	public function about()
+	public function sample()
 	{
-                $data['page_title'] = 'About';
-		$this->load->view('about', $data);
+                $data['page_title'] = 'Sample Page';
+		$this->load->view('sample-page', $data);
 	}  
         
 	public function register()
 	{
                 $data['page_title'] = 'Register';
-                $this->form_validation->set_error_delimiters('<div class="alert-message error">', '</div>');
+                $this->form_validation->set_error_delimiters('<div class="alert alert-error">', '</div>');
                 $data['error'] = NULL;
                 if ($this->form_validation->run('signup') == FALSE) //validate registration data
                 {
@@ -65,7 +65,7 @@ class Main extends CI_Controller {
                     $data['page_title'] = 'Login';
                     $data['error'] = NULL;
                     
-                    $this->form_validation->set_error_delimiters('<div class="alert-message error"><p>', '</p></div>');
+                    $this->form_validation->set_error_delimiters('<div class="alert alert-error"><p>', '</p></div>');
                     
                     if ($this->form_validation->run('login') == FALSE) //present and validate login form
                     {
@@ -79,6 +79,8 @@ class Main extends CI_Controller {
                         $check_val = $this->simpleloginsecure->login($email, $password);
                         $this->session->set_userdata(array('logged_in' => FALSE));
 
+                        $data['check_val'] = $check_val;
+                        
                         if ($check_val == FALSE) 
                         {
                             $data['error'] = 'Incorrect username or password. Please try again.';

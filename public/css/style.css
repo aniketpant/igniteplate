@@ -1,80 +1,193 @@
-@import "inuit.css";
+/*
+ * Colors 
+ * #F8DCE8
+ * #BF5F7C
+ * #703A4E
+ * #E092BE
+ * #DBE39E
+ * #358ABF
+ * #5EACBF
+*/
 
-/*-----------------------------------------*\
-    TYPOGRAPHY
-\*-----------------------------------------*/
-body { font-family: 'Droid Sans', Helvetica, sans-serif !important }
-label,
-input,
-select,
-textarea { font-family: 'Droid Sans', Helvetica, sans-serif !important }
+/*
+ * Typography 
+*/
+body, p { font-family: 'Open Sans', Arial, Helvetica, sans-serif }
+label, input, select, textarea { font-family: 'Open Sans', Arial, Helvetica, sans-serif }
+h1, h2, h3 { font-family: 'CrimsonRoman', Georgia, serif; }
+
+/*
+ * Headings 
+*/
 h1, h2, h3 {
-    font-family: 'Droid Serif', serif !important;
+    font-variant: small-caps;
+    letter-spacing: 1px;
 }
-/*-----------------------------------------*\
-    HEADER
-\*-----------------------------------------*/
-#header-container {
+
+/*
+ * General 
+*/
+body {
+    background: url('../img/bg.jpg') repeat;
 }
 #logo {
-    color: #ff0450;
+    font-family: 'CrimsonBold', Georgia, serif;
+    color: #358ABF;
     margin: 10px 0;
     padding: 10px;
     letter-spacing: 5px;
     text-align: center;
+    font-variant: normal;
     text-transform: lowercase;
-    text-shadow: 2px 2px 0px rgba(255, 4, 80, 0.25);
 }
-/*-----------------------------------------*\
-    NAVIGATION
-\*-----------------------------------------*/
+.brand {
+    color: #358ABF;
+}
+pre.code {
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+pre.code .tier1 {
+    color: #358ABF;
+}
+pre.code .tier2 {
+    color: #5EACBF;
+}
+a.back-to-top {
+    position: fixed;
+    top: 500px;
+    right: 50px;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+}
+a.back-to-top:hover {
+    text-decoration: none;
+}
+a.back-to-top:active {
+    top: 500px;
+}
+
+/*
+ * Table of Content 
+*/
+.toc .main li {
+    list-style-type: upper-roman;
+}
+.toc .sub li {
+    list-style-type: lower-roman;
+}
+.toc li a {
+    color: #C0617F;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.25s linear;
+}
+.toc li a:hover {
+    color: #713A4F;
+    border-bottom: 1px solid #713A4F;
+}
+
+/*
+ * Info List 
+*/
+.info-list li a {
+    color: #358ABF;
+}
+
+/*
+ * Navigation 
+*/
 nav[role="navigation"] {
 }
 nav[role="navigation"] ul {
-    margin: 1em 0;
+    padding: 10px 0 0;
+    list-style: none;
 }
 nav[role="navigation"] ul li {
-    display: inline-block;
-    -moz-transition: all 0.25s linear;
-    -webkit-transition: all 0.25s linear;
     transition: all 0.25s linear;
 }
 nav[role="navigation"] ul li a {
     display: block;
-    padding: 0 0.5em 0.25em;
+    padding: 5px 10px;
     color: #222;
-    font-family: 'Droid Serif', serif;
+    font-family: 'CrimsonRoman', Georgia, serif;
     text-decoration: none;
     border-bottom: 1px solid transparent;
-    -moz-transition: all 0.25s linear;
-    -webkit-transition: all 0.25s linear;
     transition: all 0.25s linear;
 }
 nav[role="navigation"] ul li a:hover {
-    color: #ff0450;
-    border-bottom: 1px solid #ff0450;
-    -moz-transition: all 0.25s linear;
-    -webkit-transition: all 0.25s linear;
-    transition: all 0.25s linear;
+    color: #fff;
+    background: #358ABF;
 }
-/*-----------------------------------------*\
-    CONTENT
-\*-----------------------------------------*/
-#content {
-    margin: 50px auto;
-    min-height: 300px;
+nav[role="navigation"] ul li a:hover i {
+    background-image:url("../img/glyphicons-halflings-white.png");
 }
-/*-----------------------------------------*\
-    FOOTER
-\*-----------------------------------------*/
-#footer {
+nav[role="navigation"] ul li a:active i {
+    background-image:url("../img/glyphicons-halflings.png");
+}
+
+/*
+ * Content 
+*/
+article[role="content"] {
+}
+
+/*
+ * Sidebar 
+*/
+#sidebar {
+    
+}
+.widget .widgettitle {
+    color: #222;
+    padding: 10px 0 0;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+}
+.widget ul {
+    list-style: none;
+    margin: 1em 0;
+}
+.widget ul li a {
+    display: block;
+    padding: 5px 0;
+    text-decoration: none;
+    transition: all 250ms linear;
+}
+.widget ul li a:hover{
+    color: #C0617F;
+    padding: 5px 20px 5px;
+}
+
+/*
+ * Footer 
+*/
+footer[role="footer"] {
     color: #222;
     text-align: center;
 }
-#footer p.attr {
-    margin: 0; padding: 1em;
+footer[role="footer"] p.attr {
+    margin: 0; padding: 1em 0 0;
     font-size: 1em
 }
-#footer p.attr a {
-    color: #ff0450;
+footer[role="footer"] p.attr i {
+    vertical-align: middle;
+}
+footer[role="footer"] p.attr a {
+    color: #C0617F;
+    border-bottom: 1px solid transparent;
+}
+
+/*
+ * Selection 
+*/
+::-selection {
+    background: rgba(0, 0, 0, 0.05);
+}
+::-moz-selection {
+    background: rgba(0, 0, 0, 0.05);
+}
+::-webkit-selection {
+    background: rgba(0, 0, 0, 0.05);
 }
