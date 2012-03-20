@@ -31,14 +31,8 @@ body {
     background: url('../img/bg.jpg') repeat;
 }
 #logo {
-    font-family: 'CrimsonBold', Georgia, serif;
-    color: #358ABF;
-    margin: 10px 0;
-    padding: 10px;
-    letter-spacing: 5px;
+    margin: 10px auto;
     text-align: center;
-    font-variant: normal;
-    text-transform: lowercase;
 }
 .brand {
     color: #358ABF;

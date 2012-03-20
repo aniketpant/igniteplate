@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
         <title><?php echo $page_title; ?> &mdash; igniteplate</title>
         
-        <link rel="icon" type="favicon" href="<?php echo base_url(); ?>public/images/favicon.ico"/>
+        <link rel="icon" type="favicon" href="<?php echo base_url(); ?>public/img/favicon.ico"/>
         
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/inuit.css" rel="stylesheet" />
@@ -24,7 +24,7 @@
     <div class="container">
         
         <header id="header" class="row" role="banner">
-            <h1 id="logo">igniteplate</h1>
+            <img id="logo" src="<?php echo base_url() ?>/public/img/logo.svg" alt="Igniteplate" />
         </header>
 
         <div class="row">

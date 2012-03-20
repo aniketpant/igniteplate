@@ -2,7 +2,7 @@
 
                 <section>
                     
-                    <h1 id="top">Table of Content</h1>
+                    <h1>Table of Content</h1>
                     <nav class="toc">
                         <ol class="main">
                             <li><a href="#what">What is this?</a></li>
@@ -127,7 +127,7 @@
                             </p>
                         </div>
                     </div>
-                    <a href="#top" class="back-to-top">Back to Top</a>
+                    <a href="#header" class="back-to-top">Back to Top</a>
                 </section>
 
                 <script type="text/javascript">

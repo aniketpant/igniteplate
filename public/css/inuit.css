@@ -91,7 +91,6 @@ html{
 	font-family:Calibri, "Helvetica Neue", Arial, sans-serif; /* Swap these two lines around to switch between serif and sans */
 	font-family:Cambria, Georgia, "Times New Roman", serif; /* Swap these two lines around to switch between serif and sans */
 	line-height:1.5;
-	background:url(../img/css/baseline.gif) 0 18px #fff;
 	color:#333;
 }
 body{
@@ -153,7 +152,7 @@ Your logo is an image, not a h1: http://csswizardry.com/2010/10/your-logo-is-an-
 }
 /* Based on the fact that we need to use an <img /> in our markup, let’s hide the actual image and use a background on the <a>--this gives us semantically sound markup and the ability to use sprites for hover effects! */
 #logo{
-	background:url(/path/to/logo);
+	background:url('../img/logo.svg');
 }
 #logo:hover{
 	/* Hover states */
