@@ -12,7 +12,7 @@
 /*
  * Typography 
 */
-body, p { font-family: 'Open Sans', Arial, Helvetica, sans-serif }
+body, p { font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-rendering: optimzelegitibility }
 label, input, select, textarea { font-family: 'Open Sans', Arial, Helvetica, sans-serif }
 h1, h2, h3 { font-family: 'CrimsonRoman', Georgia, serif; }
 
@@ -21,7 +21,7 @@ h1, h2, h3 { font-family: 'CrimsonRoman', Georgia, serif; }
 */
 h1, h2, h3 {
     font-variant: small-caps;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 /*
@@ -65,11 +65,14 @@ a.back-to-top:active {
 /*
  * Table of Content 
 */
-.toc .main li {
+.toc .main {
     list-style-type: upper-roman;
 }
-.toc .sub li {
+.toc ol.sub {
     list-style-type: lower-roman;
+}
+.toc ul.sub {
+    list-style-type: square;
 }
 .toc li a {
     color: #C0617F;
@@ -110,15 +113,17 @@ nav[role="navigation"] ul li a {
     border-bottom: 1px solid transparent;
     transition: all 0.25s linear;
 }
+nav[role="navigation"] ul li a i{
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(255, 255, 255, 0.25);
+}
 nav[role="navigation"] ul li a:hover {
     color: #fff;
     background: #358ABF;
+		box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
-nav[role="navigation"] ul li a:hover i {
-    background-image:url("../img/glyphicons-halflings-white.png");
-}
-nav[role="navigation"] ul li a:active i {
-    background-image:url("../img/glyphicons-halflings.png");
+nav[role="navigation"] ul li a:active i{
+    color: #222;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25), 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 /*
@@ -176,12 +181,12 @@ footer[role="footer"] p.attr a {
 /*
  * Selection 
 */
-::-selection {
+::selection {
     background: rgba(0, 0, 0, 0.05);
 }
 ::-moz-selection {
     background: rgba(0, 0, 0, 0.05);
 }
-::-webkit-selection {
+::-webkit-selection 
     background: rgba(0, 0, 0, 0.05);
 }

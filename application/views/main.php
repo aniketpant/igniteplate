@@ -18,6 +18,16 @@
                                     <li><a href="#views">Views</a></li>
                                 </ol>
                             </li>
+														<li><a href="#changelog">Changelog</a>
+                                <ul class="sub">
+                                    <li><a href="#v1.4">Version 1.4</a></li>
+                                    <li><a href="#v1.3">Version 1.3</a></li>
+                                    <li><a href="#v1.2">Version 1.2</a></li>
+                                    <li><a href="#v1.1">Version 1.1</a></li>
+                                    <li><a href="#v1.0">Version 1.0</a></li>
+                                </ul>
+														</li>
+														<li><a href="#readmore">More on Igniteplate</a></li>
                         </ol>
                     </nav>
                     <div id="what">
@@ -28,9 +38,11 @@
                         <h2>The Ingredients</h2>
                         <ul class="info-list">
                             <li><a rel="tooltip" href="http://codeigniter.com" title="Go checkout Codeigniter!">Codeigniter</a></li>
-                            <li><a rel="tooltip" href="http://twitter.github.com" title="Twitter Bootstrap">Twitter Bootstrap</a></li>
-                            <li><a rel="tooltip" href="http://csswizardry.com/inuitcss/" data-original-title="Made by csswizardry. A permanent component of my projects.">Inuit CSS</a></li>
-                            <li><a rel="tooltip" href="http://codeigniter.com/wiki/SimpleLoginSecure" data-original-title="My favorite library for managing user details">Simple Login Secure</a></li>
+                            <li><a rel="tooltip" href="http://twitter.github.com" title="Don't waste too much time on the styling at the start. Bootstrap.">Twitter Bootstrap</a></li>
+                            <li><a rel="tooltip" href="http://csswizardry.com/inuitcss/" title="Made by csswizardry. A permanent component of my projects.">Inuit CSS</a></li>
+                            <li><a rel="tooltip" href="http://codeigniter.com/wiki/SimpleLoginSecure" title="My favorite library for managing user details">Simple Login Secure</a></li>
+                            <li><a rel="tooltip" href="https://github.com/LeaVerou/prefixfree" title="Prefix Free : Stop worrying about vendor prefixes">Prefixfree</a></li>
+                            <li><a rel="tooltip" href="http://fortawesome.github.com/Font-Awesome/" title="Replaced the glyphicons with awesome font!">Font Awesome</a></li>
                         </ul>
                     </div>
                     <div id="how-to-use">
@@ -127,11 +139,60 @@
                             </p>
                         </div>
                     </div>
+										<div id="changelog">
+												<h2>Changelog</h2>
+												<p>
+														This section covers all changes <span class="brand">Igniteplate</span> has seen in it's existence.
+												</p>
+												<div id="v1.4">
+														<h3>Version 1.4 (Work in Progress)</h3>
+														<ul>
+																<li>Integrating Social Auth</li>
+														</ul>	
+												</div>
+												<div id="v1.3">
+														<h3>Version 1.3</h3>
+														<ul>
+																<li>Shifted from using glyphicons to Font-Awesome</li>
+														</ul>	
+												</div>
+												<div id="v1.2">
+														<h3>Version 1.2</h3>
+														<ul>
+																<li>Changed layout and design</li>
+																<li>Documentation</li>
+														</ul>
+												</div>
+												<div id="v1.1">
+														<h3>Version 1.1</h3>
+														<ul>
+																<li>Integrated Twitter Bootstrap</li>
+																<li>Integrated inuit.css</li>
+																<li>Started using prefixfree</li>
+														</ul>
+												</div>
+												<div id="v1.0">
+														<h3>Version 1.0</h3>
+														<ul>
+																<li>Simple Registration</li>
+																<li>Simple Login</li>
+																<li>Sample Page</li>
+														</ul>
+												</div>
+										</div>
+										<div id="readmore">
+												<h2>More on Igniteplate</h2>
+												<p>
+														You can follow what I am upto over <a href="https://trello.com/board/igniteplate/4f6b6503d7df4bc57a04c0e0">here</a>.<br/>
+														If you wish to contribute and help me out in building this awesome tool. Go ahead and fork the code. And when you're done, make a pull request.
+												</p>
+										</div>
                     <a href="#header" class="back-to-top">Back to Top</a>
                 </section>
 
                 <script type="text/javascript">
-                    $('a[rel="tooltip"]').tooltip();
+                    var options = { placement : 'right' };
+                    $('a[rel="tooltip"]').tooltip(options);
                     $('.back-to-top').hide();
                     var ctr = false;
                     $(window).scroll(function(){

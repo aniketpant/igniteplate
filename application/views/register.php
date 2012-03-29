@@ -8,47 +8,62 @@
                     ?>
                     <div class="control-group">
                         <?php
-                            echo form_label('Email', 'email', array('class' => 'control-label'));
+                            //echo form_label('Email', 'email', array('class' => 'control-label'));
                             $arr_email = array(
-                                'name' => 'email',
-                                'id' => 'email',
-                                'value' => set_value('email')
+                                'name'          => 'email',
+                                'id'            => 'email',
+                                'class'         => 'span2',
+                                'placeholder'   => 'Email address',
+                                'value'         => set_value('email')
                             );
                         ?>
                         <div class="controls">
-                        <?php
-                            echo form_input($arr_email);
-                        ?>
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="icon-envelope"></i></span>
+                            <?php
+                                echo form_input($arr_email);
+                            ?>
+                            </div>
                         </div>
                     </div>
                     <div class="control-group">
                         <?php
-                            echo form_label('Password', 'password', array('class' => 'control-label'));
+                            //echo form_label('Password', 'password', array('class' => 'control-label'));
                             $arr_password = array(
-                                'name' => 'password',
-                                'id' => 'password',
-                                'value' => set_value('password')
+                                'name'          => 'password',
+                                'id'            => 'password',
+                                'class'         => 'span2',
+                                'placeholder'   => 'Password',
+                                'value'         => set_value('password')
                             );
                         ?>
                         <div class="controls">
-                        <?php        
-                            echo form_password($arr_password);
-                        ?>
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="icon-key"></i></span>
+                            <?php        
+                                echo form_password($arr_password);
+                            ?>
+                            </div>
                         </div>
                     </div>
                     <div class="control-group">
                         <?php
-                            echo form_label('Confirm Password', 'passconf', array('class' => 'control-label'));
+                            //echo form_label('Confirm Password', 'passconf', array('class' => 'control-label'));
                             $arr_passconf = array(
-                                'name' => 'passconf',
-                                'id' => 'passconf',
-                                'value' => set_value('passconf')
+                                'name'          => 'passconf',
+                                'id'            => 'passconf',
+                                'class'         => 'span2',
+                                'placeholder'   => 'Confirm Password',
+                                'value'         => set_value('passconf')
                             );
                         ?>
                         <div class="controls">
-                        <?php        
-                            echo form_password($arr_passconf);
-                        ?>
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="icon-key"></i></span>
+                            <?php        
+                                echo form_password($arr_passconf);
+                            ?>
+                            </div>
                         </div>
                     </div>
                     <div class="control-group">
@@ -56,7 +71,7 @@
                             $arr_button = array(
                                 'name'  => 'submit',
                                 'value' => 'Register',
-                                'class' => 'btn btn-primary btn-large'
+                                'class' => 'btn btn-primary'
                             );
                         ?>
                         <div class="controls">

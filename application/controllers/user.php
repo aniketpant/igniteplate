@@ -26,7 +26,7 @@ class user extends CI_Controller {
         
         public function verify($verification_key)
         {
-                $this->load->model('usermodel', 'user');
+                $this->load->model('User_model', 'user');
                 $check_val = $this->user->verify_account($verification_key);
                 if ($check_val) {
                     $this->load->view('messages/account_verified');

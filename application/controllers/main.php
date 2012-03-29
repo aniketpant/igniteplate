@@ -1,21 +1,43 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Main extends CI_Controller {
+   
+        function __construct() {
+            
+                parent::__construct();
+		$this->load->model('Facebook_model');
+        }
 
-	public function index()
-	{
+	public function index() {
+            
                 $data['page_title'] = 'Home';
 		$this->load->view('main', $data);
+                
+                $fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
+
+		if((!$fb_data['uid']) or (!$fb_data['me']))
+		{
+		}
+		else
+		{
+			$data = array(
+                            'fb_data' => $fb_data,
+                        );
+
+			$this->load->view('home', $data);
+		}
+                
 	}  
         
-	public function sample()
-	{
+	public function sample() {
+            
                 $data['page_title'] = 'Sample Page';
 		$this->load->view('sample-page', $data);
+                
 	}  
         
-	public function register()
-	{
+	public function register() {
+            
                 $data['page_title'] = 'Register';
                 $this->form_validation->set_error_delimiters('<div class="alert alert-error">', '</div>');
                 $data['error'] = NULL;
@@ -28,7 +50,7 @@ class Main extends CI_Controller {
                     $email = $this->input->post('email');
                     $password = $this->input->post('password');
                     
-                    $this->load->model('usermodel', 'user');
+                    $this->load->model('User_model', 'user');
                     
                     //check if email already registered.
                     $check_val = $this->user->check_email_exists($email);
@@ -52,10 +74,14 @@ class Main extends CI_Controller {
                         }
                     }
                 }
+                
 	}  
         
-	public function login()
-	{
+	public function login() {
+                
+                $fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
+                $data['fb_data'] = $fb_data;
+            
                 if ( $this->session->userdata('logged_in') == TRUE) 
                 {
                     redirect('user', 'location');
@@ -89,7 +115,7 @@ class Main extends CI_Controller {
                         
                         else //successful login
                         {
-                            $this->load->model('usermodel', 'user');
+                            $this->load->model('User_model', 'user');
                             $id = $this->user->get_user_id($email);
                             if ($this->user->check_account_verified($id)) {
                                 $this->session->set_userdata(array('logged_in' => TRUE));
@@ -102,5 +128,6 @@ class Main extends CI_Controller {
                         }
                     }
                 }
+                
         }
 }

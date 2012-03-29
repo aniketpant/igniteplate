@@ -23,10 +23,10 @@ else
         );
     
     $links_text = array(        
-        0 => '<i class="icon-home"></i>&nbsp;Home',
-        1 => '<i class="icon-star-empty"></i>&nbsp;Sample Page',
-        2 => '<i class="icon-cog"></i>&nbsp;Register',
-        3 => '<i class="icon-pencil"></i>&nbsp;Login'
+        0 => '<i class="icon-fire icon-large"></i>&nbsp;Home',
+        1 => '<i class="icon-star icon-large"></i>&nbsp;Sample Page',
+        2 => '<i class="icon-cog icon-large"></i>&nbsp;Register',
+        3 => '<i class="icon-pencil icon-large"></i>&nbsp;Login'
         );
 }
 ?>
