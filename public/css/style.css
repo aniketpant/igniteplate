@@ -12,8 +12,8 @@
 /*
  * Typography 
 */
-body, p { font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-rendering: optimzelegitibility }
-label, input, select, textarea { font-family: 'Open Sans', Arial, Helvetica, sans-serif }
+body, p { font-family: 'Open Sans', 'Lucida Grande', 'Lucida Sans', sans-serif; font-rendering: optimzelegitibility }
+label, input, select, textarea { font-family: 'Open Sans', 'Lucida Grande', 'Lucida Sans', sans-serif }
 h1, h2, h3 { font-family: 'CrimsonRoman', Georgia, serif; }
 
 /*
