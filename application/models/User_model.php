@@ -1,17 +1,37 @@
 <?php
 
+/**
+ * User Model
+ * 
+ * All required functions for managing user related tasks
+ * 
+ * @author  Aniket Pant
+ */
+
 class User_model extends CI_Model {
         
         function __construct() {
                 parent::__construct();
         }
         
+        /**
+         * Returns user id
+         * 
+         * @param   Email $email string
+         * @return  int
+         */
         function get_user_id($email) {
                 $result = $this->db->get_where('user_master', array('user_email' => $email));
                 $id = $result->first_row()->iduser_master;
                 return $id;
         }
         
+        /**
+         * Checks if given email exists in database
+         * 
+         * @param   Email $email string
+         * @return  bool
+         */
         function check_email_exists($email) {
                 $result = $this->db->get_where('user_master', array('user_email' => $email));
                 if ($result->num_rows()) {
@@ -22,6 +42,25 @@ class User_model extends CI_Model {
                 }
         }
         
+        /**
+         * Returns user role
+         * 
+         * @param string $user_name User Name
+         * @return int
+         */
+        function get_user_role($user_name) {
+                $id = $this->get_user_id($user_name);
+                $result = $this->db->get_where('user_roles', array('user_master_iduser_roles' => $id));
+                $user_role = $result->first_row()->user_role;
+                return $user_role;
+        }
+        
+        /**
+         * Checks if account verified
+         * 
+         * @param   UserID $id int
+         * @return  bool
+         */
         function check_account_verified($id) {
                 $result = $this->db->get_where('user_verify', array('user_master_iduser_master' => $id));
                 if ($result->num_rows()) {
@@ -38,6 +77,12 @@ class User_model extends CI_Model {
                 }
         }
         
+        /**
+         * Verify user account
+         * 
+         * @param VerificationKey string $verification_key
+         * @return int 
+         */
         function verify_account($verification_key) {
                 $data = array(
                     'account_verified'  => 1
@@ -47,6 +92,11 @@ class User_model extends CI_Model {
                 return $result;
         }
         
+        /**
+         * Generate verficiation key for user
+         * 
+         * @param Email string $email
+         */
         function generate_verification_key($email) {
                 $result = $this->db->get_where('user_master', array('user_email' => $email));
                 $verification_key = md5($email);
@@ -59,6 +109,11 @@ class User_model extends CI_Model {
                 $this->db->insert('user_verify', $data);
         }
         
+        /**
+         * Sends mail to user
+         * 
+         * @param Email string $email 
+         */
         function send_mail_to_user($email) {
                 $result = $this->db->get_where('user_master', array('user_email' => $email));
                 $id = $result->first_row()->iduser_master;
@@ -70,18 +125,10 @@ class User_model extends CI_Model {
                  */
                 
                 $this->load->library('email');
-               
-                $email_config['useragent'] = 'igniteplate';
-                $email_config['protocol'] = 'sendmail';
-                $email_config['mailpath'] = '/usr/sbin/sendmail';
-                $email_config['charset'] = 'iso-8859-1';
-                $email_config['wordwrap'] = TRUE;
-                $email_config['mailtype'] = 'html';
-
-                $this->email->initialize($email_config);
                 
-                $this->email->from('your@example.com', 'Your Name');
+                $this->email->from('borncssed@gmail.com', 'Aniket Pant');
                 $this->email->to($email);
+                $this->email->reply_to('borncssed@gmail.com', 'Aniket Pant');
                 
                 $message = 'Click the following link to confirm your registration.<br/><a href="'.site_url().'/user/verify/'.$verification_key.'">'.site_url().'/user/verify/'.$verification_key.'</a>';
                 
@@ -89,10 +136,18 @@ class User_model extends CI_Model {
                 $this->email->message($message);
 
                 $this->email->send();
-
-                echo $this->email->print_debugger();
         }
         
+        /**
+         * Generates a random password
+         * 
+         * @param int $chars_min
+         * @param int $chars_max
+         * @param bool $use_upper_case
+         * @param bool $include_numbers
+         * @param bool $include_special_chars
+         * @return string 
+         */
         function get_random_password($chars_min=6, $chars_max=8, $use_upper_case=true, $include_numbers=true, $include_special_chars=true)
         {
             $length = rand($chars_min, $chars_max);
@@ -114,5 +169,3 @@ class User_model extends CI_Model {
         }
         
     }
-
-?>
