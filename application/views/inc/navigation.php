@@ -2,7 +2,7 @@
 
     require_once('links.php');
     
-    $currentpage = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER["PHP_SELF"];
+    $currentpage = current_url();
 ?>
     <ul>
 <?php

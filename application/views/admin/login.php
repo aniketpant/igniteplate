@@ -1,28 +1,28 @@
-<?php include 'inc/header.php'; ?>
+<?php include 'application/views/inc/header.php'; ?>
 
                 <section>
 
-                    <h1>Login</h1>
+                    <div class="page-header"><h1><i class="icon-signin"></i>&nbsp;Administrator Login</h1></div>
 
                     <?php
-                        echo form_open('main/login', array('class' => 'form-horizontal'));
+                        echo form_open('admin/login', array('class' => 'form-horizontal'));
                     ?>
                     <div class="control-group">
                         <?php
-                            //echo form_label('Email  ', 'email', array('class' => 'control-label'));
-                            $arr_email = array(
-                                'name'          => 'email',
-                                'id'            => 'email',
+                            //echo form_label('user_name  ', 'user_name', array('class' => 'control-label'));
+                            $arr_user_name = array(
+                                'name'          => 'user_name',
+                                'id'            => 'user_name',
                                 'class'         => 'span2',
-                                'placeholder'    => 'Email address',
-                                'value'         => set_value('email')
+                                'placeholder'   => 'Your username here',
+                                'value'         => set_value('user_name')
                             );
                         ?>
                         <div class="controls">
                             <div class="input-prepend">
-                                <span class="add-on"><i class="icon-envelope"></i></span>
+                                <span class="add-on"><i class="icon-user icon-large"></i></span>
                             <?php
-                                echo form_input($arr_email);
+                                echo form_input($arr_user_name);
                             ?>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                         ?>
                         <div class="controls">
                             <div class="input-prepend">
-                                <span class="add-on"><i class="icon-key"></i></span>
+                                <span class="add-on"><i class="icon-key icon-large"></i></span>
                             <?php
                                 echo form_password($arr_password);
                             ?>
@@ -61,13 +61,6 @@
                         ?>
                         </div>
                     </div>
-                    <div class="control-group">
-                        <div class="controls">
-                            <?php
-                                echo anchor('/main/forgot-password', 'Forgot Password', array('title' => 'Forgot Passoword', 'class' => 'btn'));
-                            ?>
-                        </div>
-                    </div>
                     <?php
                         echo form_close();
 
@@ -81,29 +74,6 @@
                         echo validation_errors();
                     ?>
 
-                    <!-- Uncomment the following part and change it accordingly for a facebook login button -->
-                    <!--
-                    <div id="fb-root"></div>
-                    <script>
-                    window.fbAsyncInit = function() {
-                      FB.init({
-                        appId      : 'YOUR_APP_ID',
-                        status     : true, 
-                        cookie     : true,
-                        xfbml      : true,
-                        oauth      : true,
-                      });
-                    };
-                    (function(d){
-                       var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-                       js = d.createElement('script'); js.id = id; js.async = true;
-                       js.src = "//connect.facebook.net/en_US/all.js";
-                       d.getElementsByTagName('head')[0].appendChild(js);
-                     }(document));
-                    </script>
-                    <div class="fb-login-button" data-scope="email">Login with Facebook</div>
-                    -->
-
                 </section>
 
-<?php include 'inc/footer.php'; ?>
+<?php include 'application/views/inc/footer.php'; ?>
