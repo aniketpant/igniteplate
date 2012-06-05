@@ -5,27 +5,21 @@ class Main extends CI_Controller {
         function __construct() {
             
                 parent::__construct();
-		$this->load->model('Facebook_model');
+                if ($this->session->userdata('is_admin') == TRUE && $this->session->userdata('logged_in') == TRUE) {
+                    $this->session->set_userdata(array('login_flag' => 1));
+                }
+                else {
+                    $this->session->set_userdata(array('login_flag' => 0));
+                }
+                $this->load->model('settings_model', 'settings');
+                $this->session->set_userdata(array('admin_controls' => FALSE, 'site_name' => $this->settings->get_site_name()));
+                
         }
 
 	public function index() {
             
                 $data['page_title'] = 'Home';
 		$this->load->view('main', $data);
-                
-                $fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
-
-		if((!$fb_data['uid']) or (!$fb_data['me']))
-		{
-		}
-		else
-		{
-			$data = array(
-                            'fb_data' => $fb_data,
-                        );
-
-			$this->load->view('home', $data);
-		}
                 
 	}  
         
@@ -41,7 +35,7 @@ class Main extends CI_Controller {
                 $data['page_title'] = 'Register';
                 $this->form_validation->set_error_delimiters('<div class="alert alert-error">', '</div>');
                 $data['error'] = NULL;
-                if ($this->form_validation->run('signup') == FALSE) //validate registration data
+                if ($this->form_validation->run('standard/signup') == FALSE) //validate registration data
                 {
                     $this->load->view('register', $data);
 		}
@@ -50,7 +44,7 @@ class Main extends CI_Controller {
                     $email = $this->input->post('email');
                     $password = $this->input->post('password');
                     
-                    $this->load->model('User_model', 'user');
+                    $this->load->model('user_model', 'user');
                     
                     //check if email already registered.
                     $check_val = $this->user->check_email_exists($email);
@@ -78,9 +72,6 @@ class Main extends CI_Controller {
 	}  
         
 	public function login() {
-                
-                $fb_data = $this->session->userdata('fb_data'); // This array contains all the user FB information
-                $data['fb_data'] = $fb_data;
             
                 if ( $this->session->userdata('logged_in') == TRUE) 
                 {
@@ -93,7 +84,7 @@ class Main extends CI_Controller {
                     
                     $this->form_validation->set_error_delimiters('<div class="alert alert-error"><p>', '</p></div>');
                     
-                    if ($this->form_validation->run('login') == FALSE) //present and validate login form
+                    if ($this->form_validation->run('standard/login') == FALSE) //present and validate login form
                     {
                         $this->load->view('login', $data);
                     }
@@ -115,7 +106,7 @@ class Main extends CI_Controller {
                         
                         else //successful login
                         {
-                            $this->load->model('User_model', 'user');
+                            $this->load->model('user_model', 'user');
                             $id = $this->user->get_user_id($email);
                             if ($this->user->check_account_verified($id)) {
                                 $this->session->set_userdata(array('logged_in' => TRUE));

@@ -1,6 +1,20 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class user extends CI_Controller {
+   
+        function __construct() {
+            
+                parent::__construct();
+                if ($this->session->userdata('is_admin') == TRUE && $this->session->userdata('logged_in') == TRUE) {
+                    $this->session->set_userdata(array('login_flag' => 1));
+                }
+                else {
+                    $this->session->set_userdata(array('login_flag' => 0));
+                }
+                $this->load->model('settings_model', 'settings');
+                $this->session->set_userdata(array('admin_controls' => FALSE, 'site_name' => $this->settings->get_site_name()));
+                
+        }
 
 	public function index()
 	{
@@ -26,7 +40,7 @@ class user extends CI_Controller {
         
         public function verify($verification_key)
         {
-                $this->load->model('User_model', 'user');
+                $this->load->model('user_model', 'user');
                 $check_val = $this->user->verify_account($verification_key);
                 if ($check_val) {
                     $this->load->view('messages/account_verified');
