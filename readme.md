@@ -1,4 +1,5 @@
 # Igniteplate
+[![Project Status](http://stillmaintained.com/aniketpant/igniteplate.png)](https://stillmaintained.com/aniketpant/igniteplate)
 
 ## What this is?
 
