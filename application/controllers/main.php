@@ -4,8 +4,9 @@ class Main extends CI_Controller {
 
   public function index()
   {
-    $data['page_title'] = 'Home';
-    $this->load->view('standard/main', $data);
+    $this->template->title('Home');
+    // $this->template->set($this->load->view('standard/main'), $body);
+    $this->template->set_layout('base')->build('standard/main');
   }
 
 }
