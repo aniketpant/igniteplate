@@ -7,6 +7,6 @@ A super awesome starter kit for your CI projects.
 
 ## What is it made of?
 
- * Codeigniter
+ * CodeIgniter
  * PHP (Obviously)
- * inuit.cSS
+ * Spark
