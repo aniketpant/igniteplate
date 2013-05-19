@@ -7,3 +7,5 @@ application/logs/*
 !application/logs/.htaccess
 
 user_guide/*
+
+public/.sass-cache/*
