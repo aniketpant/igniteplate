@@ -13,12 +13,9 @@ The project uses:
 ## Installation
 
 1. Download the repository.
-
-If you wish to use the installation process for setting up `application/config/database.php`:
-
-2. Set the file permissions for `application/config/database.php` to `0666`.
-3. Access the `install` controller.
-
-Otherwise:
-
-2. Modify `database.php`.
+  - If you wish to use the installation process for setting up `application/config/database.php`:
+    1. Set the file permissions for `application/config/database.php` to `0666`.
+    2. Access the `install` controller.
+  - Otherwise:
+    1. Modify `database.php`.
+2. Enjoy!
