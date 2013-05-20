@@ -1,12 +1,24 @@
 # Igniteplate
 [![Project Status](http://stillmaintained.com/aniketpant/igniteplate.png)](https://stillmaintained.com/aniketpant/igniteplate)
 
-## What this is?
-
 A super awesome starter kit for your CI projects.
 
-## What is it made of?
+The project uses:
 
- * CodeIgniter
- * PHP (Obviously)
- * Spark
+- CodeIgniter
+- PHP (Obviously)
+- Sparks
+- inuit.css
+
+## Installation
+
+1. Download the repository.
+
+If you wish to use the installation process for setting up `application/config/database.php`:
+
+2. Set the file permissions for `application/config/database.php` to `0666`.
+3. Access the `install` controller.
+
+Otherwise:
+
+2. Modify `database.php`.
