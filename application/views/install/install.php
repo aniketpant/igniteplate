@@ -55,6 +55,6 @@
 </ul>
 <?php echo form_close(); ?>
 
-<div>
+<div class="islet">
   <?php echo validation_errors(); ?>
 </div>
