@@ -1,0 +1,31 @@
+@import "vars";
+@import "inuit.css/inuit";
+
+body {
+  width: 60rem;
+  font-family: $content;
+  color: $gray;
+  background: $white;
+  border-left: 5px solid $blue;
+  font-weight: 300;
+}
+
+.wrapper {
+  margin-left: 2rem;
+}
+
+.brand {
+  text-decoration: none;
+}
+
+a {
+  color: $blue;
+}
+
+.text-input {
+  border: 1px solid lighten($gray, 50%);
+}
+
+.error {
+  background: $yellow;
+}
