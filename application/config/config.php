@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url'] = 'http://localhost/igniteplate';
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ $config['base_url'] = 'http://localhost/igniteplate';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +44,7 @@ $config['index_page'] = '';
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']	= 'AUTO';
 
 /*
 |--------------------------------------------------------------------------
@@ -180,7 +180,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 3;
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'v7u1o1EDT4PaoRc58fBtB0kvarG72adC';
+$config['encryption_key'] = 'tFg2lRxzlIaKLTdem6N7ULMirhoKv3Ky';
 
 /*
 |--------------------------------------------------------------------------
@@ -293,7 +293,7 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_cookie_name' = The cookie name
 | 'csrf_expire' = The number in seconds the token should expire.
 */
-$config['csrf_protection'] = TRUE;
+$config['csrf_protection'] = FALSE;
 $config['csrf_token_name'] = 'csrf_test_name';
 $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 7200;
@@ -341,7 +341,7 @@ $config['time_reference'] = 'local';
 | in your view files.  Options are TRUE or FALSE (boolean)
 |
 */
-$config['rewrite_short_tags'] = TRUE;
+$config['rewrite_short_tags'] = FALSE;
 
 
 /*
@@ -356,6 +356,7 @@ $config['rewrite_short_tags'] = TRUE;
 |
 */
 $config['proxy_ips'] = '';
+
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

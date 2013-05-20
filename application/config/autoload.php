@@ -37,7 +37,7 @@
 |
 */
 
-$autoload['packages'] = array(APPPATH.'third_party');
+$autoload['packages'] = array();
 
 
 /*
@@ -52,7 +52,7 @@ $autoload['packages'] = array(APPPATH.'third_party');
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'session', 'parser', 'form_validation', 'upload', 'simpleloginsecure');
+$autoload['libraries'] = array('database', 'session');
 
 
 /*
@@ -110,6 +110,13 @@ $autoload['language'] = array();
 */
 
 $autoload['model'] = array();
+
+/**
+ * Auto-load Sparks
+ *
+ */
+
+$autoload['sparks'] = array('template/1.9.0', 'ion_auth/2.4.0');
 
 
 /* End of file autoload.php */
