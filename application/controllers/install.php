@@ -34,7 +34,7 @@ class Install extends CI_Controller {
       );
 
     $this->form_validation->set_rules($rules);
-    $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+    $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 
     if (!$this->form_validation->run())
     {

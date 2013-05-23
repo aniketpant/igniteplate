@@ -1,0 +1,1 @@
+<p>Page <em><?php echo $page_name; ?></em> not found.</p>
