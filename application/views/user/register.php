@@ -1,44 +1,44 @@
-<?php echo form_open('install/index'); ?>
+<?php echo form_open('user/register'); ?>
 <ul class="form-fields">
   <li>
     <?php
-    echo form_label('Database Host', 'db_host');
+    echo form_label('Username', 'user_name');
     echo form_input(
       array(
-        'name' => 'db_host',
-        'value' => set_value('db_host'),
+        'name' => 'user_name',
+        'value' => set_value('user_name'),
         'class' => 'text-input'
         ));
     ?>
   </li>
   <li>
     <?php
-    echo form_label('Database Username', 'db_user');
+    echo form_label('Email', 'user_email');
     echo form_input(
       array(
-        'name' => 'db_user',
-        'value' => set_value('db_user'),
+        'name' => 'user_email',
+        'type' => 'email',
+        'value' => set_value('user_email'),
         'class' => 'text-input'
         ));
     ?>
   </li>
   <li>
     <?php
-    echo form_label('Database Password', 'db_pass');
+    echo form_label('Password', 'user_pass');
     echo form_password(
       array(
-        'name' => 'db_pass',
+        'name' => 'user_pass',
         'class' => 'text-input'
         ));
     ?>
   </li>
   <li>
     <?php
-    echo form_label('Database Name', 'db_name');
-    echo form_input(
+    echo form_label('Confirm Password', 'pass_conf');
+    echo form_password(
       array(
-        'name' => 'db_name',
-        'value' => set_value('db_name'),
+        'name' => 'pass_conf',
         'class' => 'text-input'
         ));
     ?>
@@ -47,7 +47,7 @@
     <?php
     echo form_submit(array(
       'name' => 'submit',
-      'value' => 'Install',
+      'value' => 'Login',
       'class' => 'btn btn--small'
       ));
     ?>

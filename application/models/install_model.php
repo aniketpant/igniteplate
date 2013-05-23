@@ -20,7 +20,7 @@ class Install_model extends CI_Model {
       'database',
       );
 
-    $data = read_file('./private/dummy_database.php');
+    $data = read_file('./private/database-sample.php');
     $file = APPPATH.'config/database.php';
 
     foreach ($fields as $item)
